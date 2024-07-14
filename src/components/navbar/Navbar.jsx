@@ -61,7 +61,15 @@ export default function Navbar() {
                                 Create
                             </Link>
                         </li>
-
+                        <li className='nav-item'>
+                            <Link
+                                to='/picture-of-the-day'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                Picture of the Day
+                            </Link>
+                        </li>
                         <li>
                             <Link
                                 to='/sign-up'
