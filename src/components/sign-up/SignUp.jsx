@@ -1,3 +1,4 @@
+
 export default function SignUp() {
     return (
         <>
@@ -70,7 +71,6 @@ export default function SignUp() {
                             Create an account
                         </a>
                     </p>
-
                 </div>
             </div>
         </>

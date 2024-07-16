@@ -1,4 +1,4 @@
-import Button from "../button/Button";
+
 import './HeroSection.css'
 import '../../App.css'
 
@@ -19,6 +19,5 @@ export default function HeroSection() {
                 </div> */}
             </div>
         </>
-
     );
 }
