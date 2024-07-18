@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
     return (
@@ -67,9 +68,10 @@ export default function SignUp() {
 
                     <p className="mt-10 text-center text-white text-lg">
                         Don't have an account?{' '}
-                        <a href="/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 text-xl">
-                            Create an account
-                        </a>
+                        <Link to="/register" 
+                        className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 text-xl">
+                        Create an account
+                        </Link>
                     </p>
                 </div>
             </div>
