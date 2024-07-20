@@ -1,0 +1,20 @@
+{
+    "5322ab7e-2f2c-46cb-a695-9fcc90a2b1f4": {
+        "title": "Sagittarius A*",
+        "Description": "Sagittarius A* (Sgr A*) is a supermassive black hole at the center of the Milky Way galaxy. It is located near the border of the constellations Sagittarius and Scorpius, around 26,000 light-years from Earth. Sgr A* has a mass of approximately 4.3 million times that of the Sun. The black hole is surrounded by a hot accretion disk of material and is relatively quiescent compared to active galactic nuclei in other galaxies. Observations of stars orbiting Sgr A* have provided strong evidence for the existence of supermassive black holes.",
+        "age": "13.6 billion years",
+        "_id": "5322ab7e-2f2c-46cb-a695-9fcc90a2b1f4"
+    },
+    "9bba5e61-6f5e-4cf8-a574-da9aebfe4ae8": {
+        "title": "M87*",
+        "Description": "M87*, also known as the black hole in the center of Messier 87, is a supermassive black hole located about 53.5 million light-years from Earth in the galaxy Messier 87. M87* has a mass of approximately 6.5 billion times that of the Sun, making it one of the most massive black holes known. In 2019, it became the first black hole to be directly imaged by the Event Horizon Telescope, revealing a bright ring of emission surrounding the event horizon. This image provided crucial evidence for the existence of black holes and their properties.",
+        "age": "13.25 billion years",
+        "_id": "9bba5e61-6f5e-4cf8-a574-da9aebfe4ae8"
+    },
+    "9a615065-49e2-49c7-ad0f-f8046bb98350": {
+        "title": "Cygnus X-1",
+        "Description": "Cygnus X-1 is a stellar-mass black hole in the constellation Cygnus, located about 6,070 light-years from Earth. It was one of the first black hole candidates and remains one of the most studied. Cygnus X-1 has a mass of about 21 times that of the Sun and is part of a binary system with a blue supergiant star. The black hole accretes material from its companion star, producing powerful X-ray emissions. Cygnus X-1 has been a crucial object in the study of black hole properties and their interactions with companion stars.",
+        "age": "5 million years",
+        "_id": "9a615065-49e2-49c7-ad0f-f8046bb98350"
+    }
+}
