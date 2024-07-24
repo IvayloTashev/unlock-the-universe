@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
-export default function ExploreCard({ data }) {
+export default function ExploreCard({
+    data,
+    name
+ }) {
 
     return (
         <>
@@ -22,7 +25,7 @@ export default function ExploreCard({ data }) {
                     </div>
                     <div>
                         <Link
-                            to={`/`}
+                            to={`/explore/${name}/${data._id}`}
                             type="submit"
                             className="absolute inset-x-10 bottom-3 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >

@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 export default function ExploreCatalog() {
     const [data, setData] = useState({});
     const { name } = useParams();
-    console.log(name);
 
     useEffect(() => {
         fetchData();
@@ -19,7 +18,7 @@ export default function ExploreCatalog() {
 
     return (
         <div className="flex flex-wrap mx-10 my-10">
-            {Object.values(data).map(x => <ExploreCatalogCard key={x._id} data={x} />)}
+            {Object.values(data).map(x => <ExploreCatalogCard key={x._id} data={x} name={name} />)}
         </div>
 
     );
