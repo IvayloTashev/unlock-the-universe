@@ -1,6 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLogin } from "../../hooks/useAuth";
+import { useForm } from "../../hooks/useForm";
+
+const initialValues = {
+    email: '',
+    password: '',
+}
 
 export default function SignUp() {
+
+    const login = useLogin();
+    const navigate = useNavigate();
+
+    const loginHandler = async ({email, password}) => {
+
+        try {
+            await login(email, password);
+            navigate('/')
+            
+        } catch (err) {
+            console.log(err.messega);
+        }
+
+        console.log(email);
+        console.log(password);
+    }
+
+    const {changeHandler, submitHandler, values} = useForm(initialValues, loginHandler)
+
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -10,7 +37,7 @@ export default function SignUp() {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="#" method="POST" className="space-y-6">
+                <form className="space-y-6" onSubmit={submitHandler}>
                     <div>
                         <label htmlFor="email" className="block text-lg font-medium leading-6 text-white">
                             Email address
@@ -19,6 +46,8 @@ export default function SignUp() {
                             <input
                                 id="email"
                                 name="email"
+                                value={values.email}
+                                onChange={changeHandler}
                                 type="email"
                                 required
                                 autoComplete="email"
@@ -39,6 +68,8 @@ export default function SignUp() {
                             <input
                                 id="password"
                                 name="password"
+                                value={values.password}
+                                onChange={changeHandler}
                                 type="password"
                                 required
                                 autoComplete="current-password"

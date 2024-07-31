@@ -1,6 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRegister } from "../../../hooks/useAuth";
+import { useForm } from "../../../hooks/useForm";
+
+const initialValues = {
+    email: '',
+    password: '',
+    rePass: ''
+}
 
 export default function Register() {
+    const register = useRegister();
+    const navigate = useNavigate();
+
+    const registerHandler = async ({ email, password, rePass }) => {
+
+        if (password != rePass) {
+            alert('Password don\'t match');
+            return
+        }
+
+        try {
+            await register(email, password);
+            navigate('/');
+        } catch (err) {
+            console.log(err.messega);
+        }
+    }
+
+    const { changeHandler, submitHandler, values } = useForm(initialValues, registerHandler)
+
     return (
 
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +39,7 @@ export default function Register() {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="#" method="POST" className="space-y-6">
+                <form className="space-y-6" onSubmit={submitHandler}>
                     <div>
                         <label htmlFor="email" className="block text-lg font-medium leading-6 text-white">
                             Email address
@@ -20,6 +48,8 @@ export default function Register() {
                             <input
                                 id="email"
                                 name="email"
+                                value={values.email}
+                                onChange={changeHandler}
                                 type="email"
                                 required
                                 autoComplete="email"
@@ -40,6 +70,8 @@ export default function Register() {
                             <input
                                 id="password"
                                 name="password"
+                                value={values.password}
+                                onChange={changeHandler}
                                 type="password"
                                 required
                                 autoComplete="current-password"
@@ -60,7 +92,9 @@ export default function Register() {
                             <input
                                 id="rePass"
                                 name="rePass"
-                                type="rePass"
+                                value={values.rePass}
+                                onChange={changeHandler}
+                                type="password"
                                 required
                                 autoComplete="current-password"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

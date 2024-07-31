@@ -23,10 +23,11 @@ function App() {
                     <Route path="/explore/:name" element={<ExploreCatalog />} />
                     <Route path="/explore/:name/:id" element={<CatalogCardDetails />} />
                     <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
+                    
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/register" element={<Register />} />
                 </Routes>
-                
+
             </AuthContextProvider>
         </>
     )
