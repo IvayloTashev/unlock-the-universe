@@ -9,6 +9,7 @@ import ExploreCatalog from './components/explore-catalog/ExploreCatalog';
 import CatalogCardDetails from './components/explore-catalog/explore-catalog-card/catalog-card-details/CatalogCardDetails';
 import { AuthContextProvider } from './contexts/AuthContext';
 import Header from './components/header/Header';
+import Logout from './components/logout/Logout';
 
 function App() {
     return (
@@ -23,6 +24,8 @@ function App() {
                     <Route path="/explore/:name" element={<ExploreCatalog />} />
                     <Route path="/explore/:name/:id" element={<CatalogCardDetails />} />
                     <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
+
+                    <Route path="/logout" element={<Logout />} />
                     
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/register" element={<Register />} />

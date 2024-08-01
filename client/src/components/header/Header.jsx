@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Header() {
+
+    const { isAutenticated } = useAuthContext()
+
     return (
         <nav className="navbar">
             <div className='navbar-container'>
@@ -11,6 +15,7 @@ export default function Header() {
                 </Link>
 
                 <ul className='nav-menu'>
+
                     <li className='nav-item'>
                         <Link to='/' className='nav-links'>
                             Home
@@ -24,22 +29,35 @@ export default function Header() {
                     </li>
 
                     <li className='nav-item'>
-                        <Link to='/create' className='nav-links' >
-                            Create
-                        </Link>
-                    </li>
-
-                    <li className='nav-item'>
                         <Link to='/picture-of-the-day' className='nav-links' >
                             Picture of the Day
                         </Link>
                     </li>
 
-                    <li>
-                        <Link to='/sign-up' className='nav-links' >
-                            Sign Up
-                        </Link>
-                    </li>
+                    {isAutenticated
+                        ? (
+                            <>
+                                <li className='nav-item'>
+                                    <Link to='/create' className='nav-links' >
+                                        Create
+                                    </Link>
+                                </li>
+
+                                <li className='nav-item'>
+                                    <Link to='/logout' className='nav-links' >
+                                        Logout
+                                    </Link>
+                                </li>
+                            </>
+                        )
+                        : (
+                            <li>
+                                <Link to='/sign-up' className='nav-links' >
+                                    Sign Up
+                                </Link>
+                            </li>
+                        )
+                    }
                 </ul>
             </div>
         </nav>
