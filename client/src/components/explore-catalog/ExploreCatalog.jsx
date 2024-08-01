@@ -3,7 +3,7 @@ import ExploreCatalogCard from "./explore-catalog-card/ExploreCatalogCard";
 import { useParams } from "react-router-dom";
 
 export default function ExploreCatalog() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const { name } = useParams();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function ExploreCatalog() {
 
     return (
         <div className="flex flex-wrap mx-10 my-10">
-            {Object.values(data).map(x => <ExploreCatalogCard key={x._id} data={x} name={name} />)}
+            {data.map(x => <ExploreCatalogCard key={x._id} data={x} name={name} />)}
         </div>
 
     );

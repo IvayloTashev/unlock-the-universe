@@ -1453,6 +1453,25 @@
             }
         },
 
+        posts: {
+            "c25eae2c-10c7-4190-b628-470309e2b8d3": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Picture of the Milky Way",
+                "description": "Do you think of the Milky Way as a starry band across a dark night sky? Or do you think of it as a great spiral galaxy in space?",
+                "image": "https://earthsky.org/upl/2022/08/Milky-Way-Amr-Abdulwahab-western-desert-of-Egypt-July-8-2022-e1661981704464.jpg",
+                "_createdOn": 1722510915965,
+                "_id": "c25eae2c-10c7-4190-b628-470309e2b8d3"
+            },
+            "39e95c53-c0bc-4489-9c4f-57ae660c66d6": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "The Sun and The Moon",
+                "description": "Do you know why the sun and the moon have the same size looked from earth? The Sun is about 400 times bigger across than the Moon, but it also happens to be around 400 times farther away from Earth.",
+                "image": "https://www.moonglow.com/cdn/shop/articles/sunset-moon_82f36dd1-8ded-4415-9b89-8f7227e545fd.jpg?v=1563395402",
+                "_createdOn": 1722515526688,
+                "_id": "39e95c53-c0bc-4489-9c4f-57ae660c66d6"
+            }
+        },
+
         recipes: {
             "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

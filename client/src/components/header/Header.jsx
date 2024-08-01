@@ -38,8 +38,8 @@ export default function Header() {
                         ? (
                             <>
                                 <li className='nav-item'>
-                                    <Link to='/create' className='nav-links' >
-                                        Create
+                                    <Link to='/posts' className='nav-links' >
+                                        Posts
                                     </Link>
                                 </li>
 
