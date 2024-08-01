@@ -10,7 +10,7 @@ export default function CatalogCardDetails() {
         fetchData();
 
         async function fetchData() {
-            const response = await fetch(`http://localhost:3030/jsonstore/${name}/${id}`);
+            const response = await fetch(`http://localhost:3030/data/${name}/${id}`);
             const result = await response.json();
             setData(result);
         }

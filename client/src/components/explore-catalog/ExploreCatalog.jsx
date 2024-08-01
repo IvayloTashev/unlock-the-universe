@@ -10,7 +10,7 @@ export default function ExploreCatalog() {
         fetchData();
 
         async function fetchData() {
-            const response = await fetch(`http://localhost:3030/jsonstore/${name}/`);
+            const response = await fetch(`http://localhost:3030/data/${name}/`);
             const result = await response.json();
             setData(result);
         }
