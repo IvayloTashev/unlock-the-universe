@@ -21,9 +21,6 @@ export default function SignUp() {
         } catch (err) {
             console.log(err.messega);
         }
-
-        console.log(email);
-        console.log(password);
     }
 
     const {changeHandler, submitHandler, values} = useForm(initialValues, loginHandler)
