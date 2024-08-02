@@ -30,7 +30,7 @@ export function useGetOneById(name, id) {
 }
 
 export function useGetNasaPicture() {
-    const [nasaPicture, setNasaPicture] = useState([]);
+    const [nasaPicture, setNasaPicture] = useState({});
 
     useEffect(() => {
         (async () => {

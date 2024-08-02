@@ -10,7 +10,7 @@ export default function CatalogCardDetails() {
         <>
             <div className="flex min-h-screen items-center justify-center">
                 <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-20">
-                    <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
+                    <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 mx-4 my-4">
                         <img
                             src={spaceData.image}
                             alt="image"

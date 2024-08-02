@@ -11,6 +11,7 @@ import { AuthContextProvider } from './contexts/AuthContext';
 import Header from './components/header/Header';
 import Logout from './components/logout/Logout';
 import Posts from './components/posts/Posts';
+import PostsCommentsCard from './components/posts/posts-card/posts-comments-card/PostsCommentsCard';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/explore/:name/:id" element={<CatalogCardDetails />} />
                         <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
                         <Route path="/posts" element={<Posts />} />
+                        <Route path="/posts/:id" element={<PostsCommentsCard />} />
 
                         <Route path="/logout" element={<Logout />} />
 

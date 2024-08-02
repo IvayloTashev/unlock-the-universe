@@ -4,6 +4,7 @@ export default function PostsCard({
     title,
     image,
     description,
+    _id,
 }) {
 
     return (
@@ -23,7 +24,7 @@ export default function PostsCard({
                     </div>
                     <div>
                         <Link
-                            to={`/`}
+                            to={`/posts/${_id}`}
                             type="submit"
                             className="absolute inset-x-10 bottom-3 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >

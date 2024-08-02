@@ -34,15 +34,15 @@ export default function Header() {
                         </Link>
                     </li>
 
+                    <li className='nav-item'>
+                        <Link to='/posts' className='nav-links' >
+                            Posts
+                        </Link>
+                    </li>
+
                     {isAutenticated
                         ? (
                             <>
-                                <li className='nav-item'>
-                                    <Link to='/posts' className='nav-links' >
-                                        Posts
-                                    </Link>
-                                </li>
-
                                 <li className='nav-item'>
                                     <Link to='/logout' className='nav-links' >
                                         Logout
