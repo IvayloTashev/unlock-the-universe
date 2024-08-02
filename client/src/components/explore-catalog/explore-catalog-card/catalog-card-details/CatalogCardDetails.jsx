@@ -1,20 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useGetOneById } from "../../../../hooks/useSpace";
 
 export default function CatalogCardDetails() {
-
     const { name, id } = useParams();
-    const [data, setData] = useState({});
-
-    useEffect(() => {
-        fetchData();
-
-        async function fetchData() {
-            const response = await fetch(`http://localhost:3030/data/${name}/${id}`);
-            const result = await response.json();
-            setData(result);
-        }
-    }, []);
+    const [spaceData] = useGetOneById(name, id);
 
     return (
         <>
@@ -22,29 +12,29 @@ export default function CatalogCardDetails() {
                 <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mx-20">
                     <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
                         <img
-                            src={data.image}
+                            src={spaceData.image}
                             alt="image"
                             className="h-full w-full object-cover"
                         />
                     </div>
                     <div className="p-6">
                         <h1 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-purple-500 antialiased">
-                            {data.title}
+                            {spaceData.title}
                         </h1>
                         <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                            Type: {data.type}
+                            Type: {spaceData.type}
                         </p>
 
                         <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                            Distance from Earth: {data.distanceFromEarth}
+                            Distance from Earth: {spaceData.distanceFromEarth}
                         </p>
 
                         <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                            Age: {data.age}
+                            Age: {spaceData.age}
                         </p>
 
                         <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                            Description: {data.description}
+                            Description: {spaceData.description}
                         </p>
                     </div>
 
