@@ -1,9 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetOnePost } from "../../../../hooks/usePosts";
 import { useForm } from "../../../../hooks/useForm";
 import { useCreateComment, useGetAllComments } from "../../../../hooks/useComments";
 import { getAllComments } from "../../../../api/comments-api";
 import { useAuthContext } from "../../../../contexts/AuthContext";
+import { deletePosts } from "../../../../api/posts-api";
 
 
 const initialValues = {
@@ -11,20 +12,21 @@ const initialValues = {
 }
 
 export default function PostsCommentsCard() {
-    const { id } = useParams()
-    const [post] = useGetOnePost(id);
-    const [comments, setComments] = useGetAllComments(id);
+    const { postId } = useParams()
+    const [post] = useGetOnePost(postId);
+    const navigate = useNavigate();
+    const [comments, setComments] = useGetAllComments(postId);
     const { userId, isAutenticated } = useAuthContext();
     const createComment = useCreateComment();
 
     async function setCommentHandler() {
-        let comments = await getAllComments(id);
+        let comments = await getAllComments(postId);
         setComments(oldComments => [...comments]);
     }
 
     const { changeHandler, submitHandler, values } = useForm(initialValues, async ({ comment }) => {
         try {
-            const newComment = await createComment(id, comment);
+            const newComment = await createComment(postId, comment);
             setCommentHandler();
 
         } catch (err) {
@@ -33,6 +35,16 @@ export default function PostsCommentsCard() {
     });
 
     const isOwner = userId === post._ownerId;
+
+    const postDeleteHandler = async () => {
+        try {
+            await deletePosts(postId);
+            navigate('/posts')
+
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
 
     return (
         <>
@@ -58,7 +70,7 @@ export default function PostsCommentsCard() {
                                 <Link to={`/edit/${post._id}`} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
                                     Edit post
                                 </Link>
-                                <Link to={`/delete/${post._id}`} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
+                                <Link to={`/delete/${post._id}`} onClick={postDeleteHandler} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
                                     Delete post
                                 </Link>
                             </div>

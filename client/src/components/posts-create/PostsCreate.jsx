@@ -14,16 +14,12 @@ export default function PostsCreate() {
     const navigate = useNavigate();
 
     const createHandler = async (values) => {
-
         try {
             const newPost = await create(values);
             navigate(`/posts/${newPost._id}`)
-            console.log(newPost);
-            
 
         } catch (err) {
             console.log(err.messege);
-            
         }
     }
 

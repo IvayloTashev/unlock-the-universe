@@ -30,7 +30,7 @@ function App() {
                         <Route path="/explore/:name/:id" element={<CatalogCardDetails />} />
                         <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
                         <Route path="/posts" element={<Posts />} />
-                        <Route path="/posts/:id" element={<PostsCommentsCard />} />
+                        <Route path="/posts/:postId" element={<PostsCommentsCard />} />
                         <Route path="/create" element={<PostsCreate />} />
 
                         <Route path="/logout" element={<Logout />} />
