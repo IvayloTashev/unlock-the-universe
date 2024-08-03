@@ -14,6 +14,8 @@ import Posts from './components/posts/Posts';
 import PostsCommentsCard from './components/posts/posts-card/posts-comments-card/PostsCommentsCard';
 import PostsCreate from './components/posts-create/PostsCreate';
 import PostsEdit from './components/posts-edit/PostsEdit';
+import IsAuthenticated from './components/is-authenticated/IsAuthenticated';
+import IsNotAuthenticated from './components/is-not-authenticated/IsNotAuthenticated';
 
 function App() {
     return (
@@ -32,13 +34,18 @@ function App() {
                         <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
                         <Route path="/posts" element={<Posts />} />
                         <Route path="/posts/:postId" element={<PostsCommentsCard />} />
-                        <Route path="/posts/edit/:postId" element={<PostsEdit />} />
-                        <Route path="/create" element={<PostsCreate />} />
 
-                        <Route path="/logout" element={<Logout />} />
+                        <Route element={<IsNotAuthenticated />} >
+                            <Route path="/sign-up" element={<SignUp />} />
+                            <Route path="/register" element={<Register />} />
+                        </Route>
 
-                        <Route path="/sign-up" element={<SignUp />} />
-                        <Route path="/register" element={<Register />} />
+                        <Route element={<IsAuthenticated />}>
+                            <Route path="/create" element={<PostsCreate />} />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/posts/edit/:postId" element={<PostsEdit />} />
+
+                        </Route>
                     </Routes>
                 </main>
 
