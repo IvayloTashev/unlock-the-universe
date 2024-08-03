@@ -37,6 +37,12 @@ export default function PostsCommentsCard() {
     const isOwner = userId === post._ownerId;
 
     const postDeleteHandler = async () => {
+        const confirmation = confirm(`Do you want to delete this post?`)
+
+        if (!confirmation) {
+            return;
+        }
+
         try {
             await deletePosts(postId);
             navigate('/posts')
@@ -67,10 +73,10 @@ export default function PostsCommentsCard() {
 
                         {isOwner && (
                             <div className="my-5">
-                                <Link to={`/edit/${post._id}`} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
+                                <Link to={`/posts/edit/${post._id}`} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
                                     Edit post
                                 </Link>
-                                <Link to={`/delete/${post._id}`} onClick={postDeleteHandler} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
+                                <Link to="#" onClick={postDeleteHandler} className="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-1 my-3">
                                     Delete post
                                 </Link>
                             </div>

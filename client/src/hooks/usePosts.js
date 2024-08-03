@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createPosts, getAllPosts, getOnePost } from "../api/posts-api";
+import { createPosts, getAllPosts, getOnePost, updatePosts } from "../api/posts-api";
 
 export function useGetAllPosts() {
     const [posts, setPosts] = useState([]);
@@ -15,12 +15,12 @@ export function useGetAllPosts() {
     return [posts, setPosts];
 }
 
-export function useGetOnePost(id) {
+export function useGetOnePost(postId) {
     const [post, setPost] = useState({});
 
     useEffect(() => {
         (async () => {
-            const result = await getOnePost(id);
+            const result = await getOnePost(postId);
             setPost(result);
 
         })();
@@ -34,3 +34,10 @@ export function useCreatePosts() {
 
     return postsCreateHandler;
 }
+
+export function useUpdatePosts() {
+    const postsUpdateHandler = (postId, postData) => updatePosts(postId, postData);
+
+    return postsUpdateHandler;
+}
+
