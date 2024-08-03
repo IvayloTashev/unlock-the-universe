@@ -21,7 +21,7 @@ async function requester(method, url, data) {
 
         if (!response.ok) {
             if (response.status == 403) {
-                clearUserData();
+                localStorage.clear();
             }
 
             const err = await response.json();

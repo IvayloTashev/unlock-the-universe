@@ -54,7 +54,7 @@ export default function PostsCommentsCard() {
                             <ul>
                                 {comments.map(comment => (
                                     <li key={comment._id} className="comment">
-                                        <p>{comment.author.username}: {comment.text}</p>
+                                        <p>{comment.author.email}: {comment.text}</p>
                                     </li>))
                                 }
                             </ul>

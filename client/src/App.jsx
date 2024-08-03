@@ -12,6 +12,7 @@ import Header from './components/header/Header';
 import Logout from './components/logout/Logout';
 import Posts from './components/posts/Posts';
 import PostsCommentsCard from './components/posts/posts-card/posts-comments-card/PostsCommentsCard';
+import PostsCreate from './components/posts-create/PostsCreate';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                         <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
                         <Route path="/posts" element={<Posts />} />
                         <Route path="/posts/:id" element={<PostsCommentsCard />} />
+                        <Route path="/create" element={<PostsCreate />} />
 
                         <Route path="/logout" element={<Logout />} />
 

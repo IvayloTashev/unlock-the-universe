@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllPosts, getOnePost } from "../api/posts-api";
+import { createPosts, getAllPosts, getOnePost } from "../api/posts-api";
 
 export function useGetAllPosts() {
     const [posts, setPosts] = useState([]);
@@ -27,4 +27,10 @@ export function useGetOnePost(id) {
     }, []);
 
     return [post, setPost];
+}
+
+export function useCreatePosts() {
+    const postsCreateHandler = (data) => createPosts(data);
+
+    return postsCreateHandler;
 }
