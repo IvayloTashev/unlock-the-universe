@@ -2,12 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetOnePost, useUpdatePosts } from "../../hooks/usePosts";
 import { useForm } from "../../hooks/useForm";
 
-const initialValues = {
-    title: '',
-    image: '',
-    description: '',
-}
-
 export default function PostsEdit() {
     const update = useUpdatePosts();
     const navigate = useNavigate();
@@ -24,7 +18,7 @@ export default function PostsEdit() {
         }
     }
 
-    const { changeHandler, submitHandler, values } = useForm(Object.assign(initialValues, post), updateHandler)
+    const { changeHandler, submitHandler, values } = useForm(post, updateHandler)
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

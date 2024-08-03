@@ -16,7 +16,11 @@ export function useGetAllPosts() {
 }
 
 export function useGetOnePost(postId) {
-    const [post, setPost] = useState({});
+    const [post, setPost] = useState({
+        title: '',
+        image: '',
+        description: '',
+    });
 
     useEffect(() => {
         (async () => {
