@@ -16,6 +16,7 @@ import PostsCreate from './components/posts-create/PostsCreate';
 import PostsEdit from './components/posts-edit/PostsEdit';
 import IsAuthenticated from './components/is-authenticated/IsAuthenticated';
 import IsNotAuthenticated from './components/is-not-authenticated/IsNotAuthenticated';
+import UserProfile from './components/user-profile/UserProfile';
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                         </Route>
 
                         <Route element={<IsAuthenticated />}>
+                            <Route path="/profile" element={<UserProfile />} />
                             <Route path="/create" element={<PostsCreate />} />
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/posts/edit/:postId" element={<PostsEdit />} />

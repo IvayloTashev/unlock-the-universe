@@ -44,6 +44,11 @@ export default function Header() {
                         ? (
                             <>
                                 <li className='nav-item'>
+                                    <Link to='/profile' className='nav-links' >
+                                        Profile
+                                    </Link>
+                                </li>
+                                <li className='nav-item'>
                                     <Link to='/create' className='nav-links' >
                                         Create post
                                     </Link>
