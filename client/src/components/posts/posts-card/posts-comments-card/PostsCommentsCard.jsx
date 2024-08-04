@@ -2,7 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetOnePost } from "../../../../hooks/usePosts";
 import { useForm } from "../../../../hooks/useForm";
 import { useCreateComment, useGetAllComments } from "../../../../hooks/useComments";
-import { getAllComments } from "../../../../api/comments-api";
+import { deleteComment, getAllComments } from "../../../../api/comments-api";
 import { useAuthContext } from "../../../../contexts/AuthContext";
 import { deletePosts } from "../../../../api/posts-api";
 
@@ -52,6 +52,24 @@ export default function PostsCommentsCard() {
         }
     }
 
+    const commentDeleteHandler = async (commentId) => {
+        const confirmation = confirm(`Do you want to delete this comment?`);
+
+        if (!confirmation) {
+            return;
+        }
+
+        try {
+            await deleteComment(commentId);
+            setCommentHandler();
+            navigate(`/posts/${postId}`)
+
+        } catch (err) {
+            console.log(err.message);
+        }
+        
+    }
+
     return (
         <>
             <div className="flex min-h-screen items-center justify-center">
@@ -80,17 +98,27 @@ export default function PostsCommentsCard() {
                                     Delete post
                                 </Link>
                             </div>
-
-                            //flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
                         )}
                         <h2>Comments:</h2>
-                        <div className="border-solid border-4 border-indigo-600 rounded-md px-2 py-2">
+                        <div className="bg-indigo-200 border-solid border-4 border-indigo-600 rounded-md px-2 py-2">
 
                             <ul>
                                 {comments.map(comment => (
-                                    <li key={comment._id} className="comment">
-                                        <p>{comment.author.email}: {comment.text}</p>
-                                    </li>))
+                                    <div className="bg-gray-300 border-solid border-2 border-black rounded-md my-0.5 px-2 py-2">
+                                        <li key={comment._id} className="comment">
+                                            <p>{comment.author.email}: {comment.text}</p>
+                                            {comment._ownerId === userId && (
+                                                <>
+                                                    <Link to={`/comment/edit/${postId}/${comment._id}`} className="mx-1">
+                                                        <i className="fa-solid fa-pen-to-square"></i>
+                                                    </Link>
+                                                    <button className="mx-1" onClick={() => commentDeleteHandler(comment._id)}>
+                                                        <i className="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </>
+                                            )}
+                                        </li>
+                                    </div>))
                                 }
                                 {comments.length == 0 && <p>No comments yet.</p>}
                             </ul>
