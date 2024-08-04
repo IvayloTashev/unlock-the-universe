@@ -11,9 +11,11 @@ export default function PictureOfTheDay() {
 
    return (
       <div className="nasa-picture">
-         {nasaPicture.media_type === "image" ? (
+         {nasaPicture.media_type === "image" 
+         ? (
             <img src={nasaPicture.url} alt={nasaPicture.title} className="picture" />
-         ) : (
+         ) 
+         : (
             <iframe
                title="space-video"
                src={nasaPicture.url}
@@ -21,7 +23,7 @@ export default function PictureOfTheDay() {
                gesture="media"
                allow="encrypted-media"
                allowFullScreen
-               className="photo"
+               className="video"
             />
          )}
 

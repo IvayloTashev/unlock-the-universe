@@ -1,8 +1,17 @@
 .nasa-picture {
     display: flex;
     padding: 40px;
-    margin: 0 auto;
+    margin: 40px;
     max-height: 100%;
+}
+
+.nasa-picture iframe {
+    border-radius: 5%;
+    margin-right: 50px;
+    object-fit: contain;
+    height: 60vh;
+    width: 300%;
+    max-height: 80vh;
 }
 
 .nasa-picture img {
@@ -13,19 +22,19 @@
 }
 
 .nasa-picture h1 {
-    color: grey;
+    color: white;
     font-size: x-large;
     margin-top: 0;
     margin-bottom: 30px;
 }
 
 .nasa-picture p {
-    color: grey;
+    color: white;
     margin-bottom: 10px;
 }
 
 .nasa-picture .explanation {
-    color: grey;
+    color: white;
     font-size: large;
 }
 
