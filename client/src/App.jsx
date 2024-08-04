@@ -19,6 +19,7 @@ import IsAuthenticated from './components/is-authenticated/IsAuthenticated';
 import IsNotAuthenticated from './components/is-not-authenticated/IsNotAuthenticated';
 import UserProfile from './components/user-profile/UserProfile';
 import CommentEdit from './components/comment-edit/CommentEdit';
+import NotFound from './components/not-found/NotFound';
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                         <Route path="/picture-of-the-day" element={<PictureOfTheDay />} />
                         <Route path="/posts" element={<Posts />} />
                         <Route path="/posts/:postId" element={<PostsCommentsCard />} />
+                        <Route path="*" element={<NotFound />} />
 
                         <Route element={<IsNotAuthenticated />} >
                             <Route path="/sign-up" element={<SignUp />} />
