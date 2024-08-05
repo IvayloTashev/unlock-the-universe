@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRegister } from "../../../hooks/useAuth";
 import { useForm } from "../../../hooks/useForm";
+import { useState } from "react";
 
 const initialValues = {
     email: '',
@@ -11,19 +12,24 @@ const initialValues = {
 export default function Register() {
     const register = useRegister();
     const navigate = useNavigate();
+    const [error, setError] = useState({});
+    const [isError, setIsError] = useState(false);
 
     const registerHandler = async ({ email, password, rePass }) => {
 
         if (password != rePass) {
-            alert('Password don\'t match');
-            return
+            setError("Password don\'t match");
+            setIsError(true);
+            return;
         }
 
         try {
             await register(email, password);
             navigate('/');
         } catch (err) {
-            console.log(err.messega);
+            setError(err.message);
+            setIsError(true);
+            return;
         }
     }
 
@@ -119,6 +125,11 @@ export default function Register() {
                     </Link>
                 </p>
             </div>
+            {isError && (
+                <p className="block text-lg text-center font-medium leading-6 text-white mt-10 decoration-rose-500 ">
+                    {error}
+                </p>
+            )}
         </div>
     )
 }

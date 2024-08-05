@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCreatePosts } from "../../hooks/usePosts";
 import { useForm } from "../../hooks/useForm";
+import { useState } from "react";
 
 const initialValues = {
     title: '',
@@ -12,6 +13,8 @@ export default function PostsCreate() {
 
     const create = useCreatePosts();
     const navigate = useNavigate();
+    const [error, setError] = useState({});
+    const [isError, setIsError] = useState(false);
 
     const createHandler = async (values) => {
         try {
@@ -19,7 +22,9 @@ export default function PostsCreate() {
             navigate(`/posts/${newPost._id}`)
 
         } catch (err) {
-            console.log(err.messege);
+            setError(err.message);
+            setIsError(true);
+            return
         }
     }
 
@@ -103,6 +108,11 @@ export default function PostsCreate() {
                     </div>
                 </form>
             </div>
+            {isError && (
+                <p className="block text-lg text-center font-medium leading-6 text-white mt-10 decoration-rose-500 ">
+                    {error}
+                </p>
+            )}
         </div>
     )
 }

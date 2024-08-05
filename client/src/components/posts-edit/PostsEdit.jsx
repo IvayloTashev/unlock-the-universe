@@ -1,12 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetOnePost, useUpdatePosts } from "../../hooks/usePosts";
 import { useForm } from "../../hooks/useForm";
+import { useState } from "react";
 
 export default function PostsEdit() {
     const update = useUpdatePosts();
     const navigate = useNavigate();
+    const [error, setError] = useState({});
+    const [isError, setIsError] = useState(false);
     const { postId } = useParams();
-    const [post] = useGetOnePost(postId)
+    const [post] = useGetOnePost(postId);
 
     const updateHandler = async (values) => {
         try {
@@ -14,7 +17,9 @@ export default function PostsEdit() {
             navigate(`/posts/${updatedPost._id}`)
 
         } catch (err) {
-            console.log(err.messege);
+            setError(err.message);
+            setIsError(true);
+            return
         }
     }
 
@@ -98,6 +103,11 @@ export default function PostsEdit() {
                     </div>
                 </form>
             </div>
+            {isError && (
+                <p className="block text-lg text-center font-medium leading-6 text-white mt-10 decoration-rose-500 ">
+                    {error}
+                </p>
+            )}
         </div>
     )
 }

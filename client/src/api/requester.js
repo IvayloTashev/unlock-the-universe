@@ -35,7 +35,6 @@ async function requester(method, url, data) {
         }
 
     } catch (err) {
-        alert(err.message);
         throw err;
     }
 }

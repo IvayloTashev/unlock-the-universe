@@ -1,10 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useGetOneComment, useUpdateComment } from "../../hooks/useComments";
+import { useState } from "react";
 
 export default function CommentEdit() {
     const update = useUpdateComment();
     const navigate = useNavigate();
+    const [error, setError] = useState({});
+    const [isError, setIsError] = useState(false);
     const { postId, commentId } = useParams();
     const [comment] = useGetOneComment(commentId)
 
@@ -15,7 +18,9 @@ export default function CommentEdit() {
             navigate(`/posts/${postId}`)
 
         } catch (err) {
-            console.log(err.messege);
+            setError(err.message);
+            setIsError(true);
+            return
         }
     }
 
@@ -59,6 +64,11 @@ export default function CommentEdit() {
                     </div>
                 </form>
             </div>
+            {isError && (
+                <p className="block text-lg text-center font-medium leading-6 text-white mt-10 decoration-rose-500 ">
+                    {error}
+                </p>
+            )}
         </div>
     )
 }
