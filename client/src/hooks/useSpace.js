@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllbyType, getNasaPicture, getOnebyId } from "../api/space-api";
+import { getAllbyType, getCelestialBodies, getNasaPicture, getOnebyId } from "../api/space-api";
 
 export function useGetAllByType(name) {
     const [spaceData, setSpaceData] = useState([]);
@@ -31,14 +31,32 @@ export function useGetOneById(name, id) {
 
 export function useGetNasaPicture() {
     const [nasaPicture, setNasaPicture] = useState({});
+    const [isPending, setIsPending] = useState(false);
 
     useEffect(() => {
         (async () => {
+            setIsPending(true);
             const result = await getNasaPicture();
+            setIsPending(false);
             setNasaPicture(result);
-
         })();
     }, []);
 
-    return [nasaPicture, setNasaPicture];
+    return [nasaPicture, isPending];
+}
+
+export function useGetCelestialBodies() {
+    const [celestialBodies, SetCelestialBodies] = useState([]);
+    const [isPending, setIsPending] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            setIsPending(true);
+            const result = await getCelestialBodies();
+            setIsPending(false);
+            SetCelestialBodies(result);
+        })();
+    }, []);
+
+    return [celestialBodies, isPending];
 }
