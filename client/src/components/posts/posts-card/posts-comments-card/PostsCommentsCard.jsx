@@ -104,8 +104,8 @@ export default function PostsCommentsCard() {
 
                             <ul>
                                 {comments.map(comment => (
-                                    <div className="bg-gray-300 border-solid border-2 border-black rounded-md my-0.5 px-2 py-2">
-                                        <li key={comment._id} className="comment">
+                                    <div key={comment._id} className="bg-gray-300 border-solid border-2 border-black rounded-md my-0.5 px-2 py-2">
+                                        <li className="comment">
                                             <p>{comment.author.email}: {comment.text}</p>
                                             {comment._ownerId === userId && (
                                                 <>

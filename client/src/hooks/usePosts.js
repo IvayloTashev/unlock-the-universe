@@ -3,16 +3,19 @@ import { createPosts, getAllPosts, getOnePost, updatePosts } from "../api/posts-
 
 export function useGetAllPosts() {
     const [posts, setPosts] = useState([]);
+    const [isPending, setIsPending] = useState(false);
 
     useEffect(() => {
         (async () => {
+            setIsPending(true)
             const result = await getAllPosts();
+            setIsPending(false)
             setPosts(result);
 
         })();
     }, []);
 
-    return [posts, setPosts];
+    return [posts, isPending];
 }
 
 export function useGetOnePost(postId) {

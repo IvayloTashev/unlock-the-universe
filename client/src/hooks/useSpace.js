@@ -3,30 +3,36 @@ import { getAllbyType, getCelestialBodies, getNasaPicture, getOnebyId } from "..
 
 export function useGetAllByType(name) {
     const [spaceData, setSpaceData] = useState([]);
+    const [isPending, setIsPending] = useState(false);
 
     useEffect(() => {
         (async () => {
+            setIsPending(true)
             const result = await getAllbyType(name);
+            setIsPending(false);
             setSpaceData(result);
 
         })();
     }, []);
 
-    return [spaceData, setSpaceData];
+    return [spaceData, isPending];
 }
 
 export function useGetOneById(name, id) {
     const [spaceData, setSpaceData] = useState([]);
+    const [isPending, setIsPending] = useState(false);
 
     useEffect(() => {
         (async () => {
+            setIsPending(true)
             const result = await getOnebyId(name, id);
+            setIsPending(false);
             setSpaceData(result);
 
         })();
     }, []);
 
-    return [spaceData, setSpaceData];
+    return [spaceData, isPending];
 }
 
 export function useGetNasaPicture() {
