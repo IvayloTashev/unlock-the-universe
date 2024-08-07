@@ -2,7 +2,7 @@
 This is my first React project, made for SoftUni React JS course 2024.
 
 # Used technologies
-- Front-end: React, react-dom, react-router-dom, tailwind, fontawesome
+- Front-end: React, react-dom, react-router-dom, react-loader-spinner, tailwind, fontawesome
 - Back-end: SoftUni practice server - `https://github.com/softuni-practice-server/softuni-practice-server`
 
 # Installation
